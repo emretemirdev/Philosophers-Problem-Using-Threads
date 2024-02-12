@@ -6,7 +6,7 @@
 /*   By: emtemir <emtemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:23:22 by emtemir           #+#    #+#             */
-/*   Updated: 2024/02/07 19:16:38 by emtemir          ###   ########.fr       */
+/*   Updated: 2024/02/12 22:56:33 by emtemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void ft_exit(t_data *data)
         pthread_mutex_destroy(&data->forks[i]);
         pthread_mutex_destroy(&data->philos[i].lock);
     }
-
     // Diğer mutex'leri temizler.
     pthread_mutex_destroy(&data->write);
     pthread_mutex_destroy(&data->lock);
