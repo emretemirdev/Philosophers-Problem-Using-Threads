@@ -6,7 +6,7 @@
 /*   By: emtemir <emtemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 04:12:41 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/13 01:47:19 by emtemir          ###   ########.fr       */
+/*   Updated: 2024/02/13 16:14:03 by emtemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct s_philo
 	pthread_mutex_t			*rightfork;
 }							t_philo;
 
-int		checkargument(int ac, char **av);
-int		checkdeath(t_philo *philo);
+int		checkargument(int ac, char **av); // helperutils.c Komut satırı argümanlarını doğrular.
+int		checkdeath(t_philo *philo); 
 int		waitfunc(time_t waitime_t);
 int		ft_atol(char *str);
 time_t	gettime(void);

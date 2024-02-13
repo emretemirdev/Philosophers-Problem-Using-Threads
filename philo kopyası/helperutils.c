@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: emtemir <emtemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/13 01:46:36 by emtemir           #+#    #+#             */
-/*   Updated: 2024/02/13 14:20:20 by emtemir          ###   ########.fr       */
+/*   Created: 2024/02/13 01:46:58 by emtemir           #+#    #+#             */
+/*   Updated: 2024/02/13 17:09:36 by emtemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "philo.h"
 
@@ -60,6 +61,9 @@ int	ft_atol(char *str)
 	return ((int)result * sign);
 }
 
+//initmutex tarafından oluşturulan mutexleri serbest bırakır.
+//philo: t_philo yapısı
+//forks: t_philo yapısındaki her bir filozofun solunda bulunan çatalı temsil eden mutexlerin bir dizisi
 void	freemutex(t_philo *philo, pthread_mutex_t *forks)
 {
 	int	i;
@@ -74,5 +78,4 @@ void	freemutex(t_philo *philo, pthread_mutex_t *forks)
 	}
 	pthread_mutex_destroy(philo->death);
 	free(forks);
-	free(philo);
 }

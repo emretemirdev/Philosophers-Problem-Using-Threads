@@ -6,7 +6,7 @@
 /*   By: emtemir <emtemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 01:46:58 by emtemir           #+#    #+#             */
-/*   Updated: 2024/02/13 13:43:12 by emtemir          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:10:14 by emtemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,21 +89,8 @@ void	initmutex(t_philo *philo, pthread_mutex_t *forks)
 	pthread_mutex_init(philo->death, NULL);
 }
 
-void	freemutex(t_philo *philo, pthread_mutex_t *forks)
-{
-	int	i;
-
-	i = 0;
-	while (i < philo->args[PHILOCOUNT])
-	{
-		pthread_mutex_destroy(&forks[i]);
-		pthread_mutex_destroy(&philo[i].lasteatmutex);
-		pthread_mutex_destroy(&philo[i].totaleatmutex);
-		i++;
-	}
-	pthread_mutex_destroy(philo->death);
-	free(forks);
-}
+//initthread: Her bir filozof için bir thread başlatır ve yaşam döngüsülerini yönetir.
+//philo: t_philo yapısı
 void	initthread(t_philo *philo)
 {
 	int	i;

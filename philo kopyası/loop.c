@@ -6,18 +6,26 @@
 /*   By: emtemir <emtemir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 01:47:04 by emtemir           #+#    #+#             */
-/*   Updated: 2024/02/13 01:47:05 by emtemir          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:24:54 by emtemir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+/*Mutex Kilitleme: Aynı anda sadece bir filozofun çatal almasını sağlamak için pthread_mutex_lock kullanılır.
+Bu, her birinin bir çatalı sonsuza kadar tuttuğu çıkmazları önler.
+Tek Filozof Durumu: Asla her iki çatalı da alamayacak ve açlıktan ölecek tek bir filozofun olduğu durumu yönetir.
+Yeme Simülasyonu: waitfunc muhtemelen filozofun belirli bir süre boyunca yemesini simüle etmek için iş parçacığını duraklatır.
+Veri Koruma: Paylaşılan filozof verilerini güncellemeler sırasında korumak için mutexler (lasteatmutex, totaleatmutex) kullanılır.
+*/
 
 int	takeforkandeat(t_philo *philo)
 {
+	    // Sol çatalı al (uygun değilse bekle)
 	pthread_mutex_lock(philo->leftfork);
 	printphilo(philo, "has taken a fork");
 	if (philo->args[PHILOCOUNT] == 1)
 	{
+		// Açlıktan 'ölme'yi simüle et
 		waitfunc(philo->args[DIETIME]);
 		printphilo(philo, "is died");
 		pthread_mutex_unlock(philo->leftfork);
